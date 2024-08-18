@@ -32,7 +32,15 @@ describe('Working with inputs', () => {
         cy.get('#login-button').click() 
         cy.get('#add-to-cart-sauce-labs-backpack').click()
         cy.get('.shopping_cart_link').click()
-
+        cy.get('#checkout').click()
+        cy.get('#first-name').clear()
+        cy.get('#first-name').type('irpan')
+        cy.get('#last-name').clear()
+        cy.get('#last-name').type('yahyal')
+        cy.get('#postal-code').clear()
+        cy.get('#postal-code').type('46474')
+        cy.get('#continue').click()
+        cy.get('#finish').click()
     });
     
 });
