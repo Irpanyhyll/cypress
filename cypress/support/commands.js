@@ -67,3 +67,17 @@ Cypress.Commands.add('login', (username, password) => {
     cy.checkout(firstName, lastName, postalCode);
   });
   
+
+  Cypress.Commands.add('loginViaAPI', (
+    email = Cypress.env('userEmail'),
+    password = Cypress.env('userPassword')
+  ) => {
+    cy.request('POST', `https://practice.expandtesting.com/notes/api/users/login`, {
+      email : 'test@mail11.com',
+      password : '1234567'
+    }).then((response) => {
+      expect(response.status).equal(200)
+      expect(response.body["message"]).to.eq("Login successful");
+    });
+  });
+  
